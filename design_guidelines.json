@@ -1,0 +1,115 @@
+{
+  "theme_and_archetype": {
+    "domain": "E-commerce (Fashion/Clothing)",
+    "theme": "Light",
+    "archetype": "Archetype 1 (Organic & Earthy) blended with Archetype 5 (Jewel & Luxury - Light variant)",
+    "description": "A modern, minimalist, and trendy e-commerce site for a young premium clothing brand. Emphasizes clean layouts, generous whitespace, soft elegant interactions, and a soft beige/rose-gold color palette pulled from the brand's logo. The goal is quiet luxury and frictionless shopping."
+  },
+  "colors": {
+    "primary": "#C4A18A",
+    "primary_hover": "#A8856F",
+    "secondary": "#FCE4EC",
+    "secondary_hover": "#F4C2D3",
+    "background_main": "#FAF9F6",
+    "surface_card": "#FFFFFF",
+    "text_primary": "#1A1A1A",
+    "text_secondary": "#5C5C5C",
+    "border_light": "#EAE5E0",
+    "badge_new": "#1A1A1A",
+    "badge_promo": "#C4A18A",
+    "badge_low_stock": "#D9534F"
+  },
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "Manrope",
+    "hierarchy": {
+      "h1": "text-5xl sm:text-6xl font-light tracking-tight",
+      "h2": "text-3xl sm:text-4xl font-normal tracking-tight",
+      "h3": "text-2xl font-medium",
+      "body": "text-base font-normal leading-relaxed text-gray-700",
+      "overline": "text-xs font-semibold uppercase tracking-[0.2em] text-[#C4A18A]"
+    }
+  },
+  "spacing_and_layout": {
+    "section_padding": "py-20 sm:py-32 px-4 sm:px-8",
+    "grid_products": "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8",
+    "container_max": "max-w-7xl mx-auto",
+    "philosophy": "Generous white space. Allow the imagery to serve as the dominant visual element. Never overcrowd sections."
+  },
+  "surface_styles": {
+    "header": "Crystal Glass: backdrop-blur-xl bg-white/80 border-b border-black/5 sticky top-0 z-50",
+    "product_card": "bg-white rounded-2xl p-4 shadow-sm border border-black/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300",
+    "testimonial_card": "bg-[#FAF9F6] rounded-2xl p-8 border border-[#EAE5E0]",
+    "event_banner": "bg-[#FCE4EC] rounded-3xl p-10 sm:p-16 flex flex-col md:flex-row items-center justify-between"
+  },
+  "components": {
+    "navbar": {
+      "layout": "Flex container with Logo on left, Navigation links center, Cart/Profile/CTA right.",
+      "behavior": "Sticky with glassmorphism.",
+      "items": ["Accueil", "Boutique", "Nouveautés", "Événements", "À propos", "Contact"]
+    },
+    "hero": {
+      "layout": "Full height or min-h-[85vh] with background image cover.",
+      "overlay": "bg-gradient-to-t from-black/40 via-black/20 to-transparent or subtle scrim so white text is legible but image remains bright.",
+      "content": "Centered or left-aligned. H1 Slogan, small description, Primary CTA 'Découvrir la collection' (Solid #C4A18A, text white), Secondary CTA 'Commander maintenant' (White background, text #C4A18A)."
+    },
+    "about": {
+      "layout": "Asymmetric 2-column or grid. Left: Large Boutique Image. Right: Brand philosophy, emphasis on quality and elegance, plus key stats (e.g., 'Nombre de produits', 'Clients satisfaits', 'Nouvelles collections')."
+    },
+    "products": {
+      "cards": "Image aspect ratio 3/4, object-cover, rounded-xl. Product name (Outfit font), Price (font-semibold), Stock status. Absolute positioned badges. Primary CTA 'Commander' (full width, subtle bg, text-white on hover).",
+      "example_items": ["Chemise Nike", "T-shirt Nike", "Black Skate Air Force Nike", "Sweat beige oversize", "Veste chic homme", "Robe moderne beige"]
+    },
+    "new_arrivals": {
+      "layout": "Highlighted slider or staggered grid. Cards slightly larger than standard products with 'New Arrival' overline."
+    },
+    "events": {
+      "layout": "Full width modern banner container. Background in #FCE4EC. Large elegant text with upcoming dates."
+    },
+    "testimonials": {
+      "layout": "Grid of 3 cards. Simple text, customer name, small avatar.",
+      "styling": "Minimalist typography, quotes in italics."
+    },
+    "footer": {
+      "layout": "Multi-column layout. Logo, social icons, links, newsletter form. Large py-20.",
+      "background": "bg-[#FAF9F6] text-[#1A1A1A] with a top border."
+    }
+  },
+  "interactive_motion": {
+    "buttons": "Hover: bg-[#A8856F] transform scale-[1.02] transition-all",
+    "cards": "Hover: shadow-xl -translate-y-1 transition-all duration-400 ease-out",
+    "page_load": "Framer motion staggered fade-in for product grids."
+  },
+  "media_assets": {
+    "logo": "https://customer-assets.emergentagent.com/job_422ceee8-c422-4d81-b1a3-9d924ef95c00/artifacts/0d6z2xph_logo%20%281%29.jpg",
+    "hero_bg": "https://images.unsplash.com/photo-1617733401065-c7bdf0b33417?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwyfHxmYXNoaW9uJTIwZWRpdG9yaWFsJTIwYmVpZ2V8ZW58MHx8fHwxNzc1NDg5NzY0fDA&ixlib=rb-4.1.0&q=85",
+    "about_boutique": "https://images.pexels.com/photos/3965551/pexels-photo-3965551.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "products": {
+      "chemise_nike": "https://images.unsplash.com/photo-1585032767761-878270336a0b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHxuaWtlJTIwc2hpcnR8ZW58MHx8fHwxNzc1NDg5NzY0fDA&ixlib=rb-4.1.0&q=85",
+      "black_sneakers": "https://images.unsplash.com/photo-1643535170091-319c6fe2e191?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwxfHxibGFjayUyMG5pa2UlMjBzbmVha2Vyc3xlbnwwfHx8fDE3NzU0ODk3NjR8MA&ixlib=rb-4.1.0&q=85",
+      "beige_sweater": "https://images.unsplash.com/photo-1773747310659-9b331019c5c2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwxfHxiZWlnZSUyMHN3ZWF0ZXJ8ZW58MHx8fHwxNzc1NDg5NzY0fDA&ixlib=rb-4.1.0&q=85",
+      "mens_jacket": "https://images.unsplash.com/photo-1764593008673-af6056758b4a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwxfHxtZW5zJTIwZWxlZ2FudCUyMGphY2tldHxlbnwwfHx8fDE3NzU0ODk3NjR8MA&ixlib=rb-4.1.0&q=85",
+      "beige_dress": "https://images.unsplash.com/photo-1723284482895-6618d25b86f9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzF8MHwxfHNlYXJjaHwxfHxiZWlnZSUyMGRyZXNzfGVufDB8fHx8MTc3NTQ4OTc2NHww&ixlib=rb-4.1.0&q=85",
+      "tshirt_nike": "https://images.pexels.com/photos/8386654/pexels-photo-8386654.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    "avatars": [
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=150&q=80",
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80"
+    ]
+  },
+  "testing": {
+    "attributes": "All interactive elements MUST include a descriptive data-testid attribute in kebab-case. Examples: data-testid='navbar-cart-icon', data-testid='hero-cta-button', data-testid='product-card-1-add-to-cart', data-testid='newsletter-submit'."
+  },
+  "instructions_to_main_agent": [
+    "Use standard HTML + Tailwind for structural layouts like Hero and About sections to allow creative asymmetry.",
+    "Use Lucide icons for UI elements.",
+    "Use framer-motion for scroll-triggered entrances and smooth hover interactions.",
+    "Implement real shopping cart logic with state management and session tracking.",
+    "Use exactly the media URLs provided in this file. Never use placeholders.",
+    "Do NOT include a Blog section.",
+    "For typography, import 'Outfit' and 'Manrope' via Google Fonts.",
+    "Create e-commerce functionality using a lightweight state store (e.g. Zustand or Context API) and mocked products database.",
+    "Ensure hover states and transitions are soft and luxurious as detailed."
+  ]
+}
