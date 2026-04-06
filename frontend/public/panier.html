@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier - GenestLoula</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C4A18A',
+                        'primary-hover': '#A8856F',
+                        secondary: '#FCE4EC',
+                        'bg-main': '#FAF9F6',
+                        'text-primary': '#1A1A1A',
+                        'text-secondary': '#5C5C5C',
+                        'border-light': '#EAE5E0',
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Manrope', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #FAF9F6;
+        }
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="/" class="flex items-center">
+                    <img src="https://customer-assets.emergentagent.com/job_422ceee8-c422-4d81-b1a3-9d924ef95c00/artifacts/0d6z2xph_logo%20%281%29.jpg" 
+                         alt="GenestLoula" 
+                         class="h-12 w-auto">
+                </a>
+
+                <div class="flex items-center space-x-4">
+                    <a href="/panier.html" class="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
+                        <svg class="w-5 h-5 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span id="cart-count-header" class="hidden absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Content -->
+    <main class="flex-1 py-20 px-4 sm:px-8 min-h-screen" data-testid="cart-page">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12">
+                <a href="/" class="inline-flex items-center gap-2 text-primary hover:text-primary-hover mb-6 transition-colors" data-testid="back-to-shop-link">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Retour à la boutique
+                </a>
+                <h1 class="text-4xl sm:text-5xl font-light tracking-tight text-text-primary font-heading">
+                    Votre Panier
+                </h1>
+            </div>
+
+            <div id="cart-content">
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-bg-main border-t border-border-light py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 text-center">
+            <p class="text-text-secondary text-sm">
+                © <span id="current-year"></span> GenestLoula. Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div id="toast" class="hidden fixed top-20 right-4 bg-white border-l-4 border-primary shadow-lg rounded-lg p-4 z-50">
+        <p id="toast-message" class="text-text-primary font-medium"></p>
+    </div>
+
+    <script src="/js/cart.js"></script>
+</body>
+</html>
