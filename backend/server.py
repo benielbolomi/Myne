@@ -233,6 +233,140 @@ async def subscribe_newsletter(email: str):
     return {"message": "Subscribed successfully"}
 
 
+# ==========================================
+# ADMIN ROUTES
+# ==========================================
+
+# Admin - Products CRUD
+@api_router.post("/admin/products")
+async def create_product(product: ProductCreate):
+    new_product = Product(**product.model_dump())
+    doc = new_product.model_dump()
+    await db.products.insert_one(doc)
+    # Remove MongoDB _id from response
+    doc.pop('_id', None)
+    return {"message": "Product created", "product": doc}
+
+@api_router.put("/admin/products/{product_id}")
+async def update_product(product_id: str, product: ProductCreate):
+    result = await db.products.update_one(
+        {"id": product_id},
+        {"$set": product.model_dump()}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return {"message": "Product updated"}
+
+@api_router.delete("/admin/products/{product_id}")
+async def delete_product(product_id: str):
+    result = await db.products.delete_one({"id": product_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return {"message": "Product deleted"}
+
+# Admin - Events CRUD
+class EventCreate(BaseModel):
+    title: str
+    description: str
+    date: str
+    image: Optional[str] = None
+
+@api_router.post("/admin/events")
+async def create_event(event: EventCreate):
+    new_event = Event(**event.model_dump())
+    doc = new_event.model_dump()
+    await db.events.insert_one(doc)
+    # Remove MongoDB _id from response
+    doc.pop('_id', None)
+    return {"message": "Event created", "event": doc}
+
+@api_router.put("/admin/events/{event_id}")
+async def update_event(event_id: str, event: EventCreate):
+    result = await db.events.update_one(
+        {"id": event_id},
+        {"$set": event.model_dump()}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Event not found")
+    return {"message": "Event updated"}
+
+@api_router.delete("/admin/events/{event_id}")
+async def delete_event(event_id: str):
+    result = await db.events.delete_one({"id": event_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Event not found")
+    return {"message": "Event deleted"}
+
+# Admin - Testimonials CRUD
+class TestimonialCreate(BaseModel):
+    name: str
+    avatar: str
+    comment: str
+
+@api_router.post("/admin/testimonials")
+async def create_testimonial(testimonial: TestimonialCreate):
+    new_testimonial = Testimonial(**testimonial.model_dump())
+    doc = new_testimonial.model_dump()
+    await db.testimonials.insert_one(doc)
+    # Remove MongoDB _id from response
+    doc.pop('_id', None)
+    return {"message": "Testimonial created", "testimonial": doc}
+
+@api_router.put("/admin/testimonials/{testimonial_id}")
+async def update_testimonial(testimonial_id: str, testimonial: TestimonialCreate):
+    result = await db.testimonials.update_one(
+        {"id": testimonial_id},
+        {"$set": testimonial.model_dump()}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Testimonial not found")
+    return {"message": "Testimonial updated"}
+
+@api_router.delete("/admin/testimonials/{testimonial_id}")
+async def delete_testimonial(testimonial_id: str):
+    result = await db.testimonials.delete_one({"id": testimonial_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Testimonial not found")
+    return {"message": "Testimonial deleted"}
+
+# Admin - Newsletter subscribers
+@api_router.get("/admin/newsletter")
+async def get_newsletter_subscribers():
+    subs = await db.newsletter.find({}, {"_id": 0}).to_list(1000)
+    return subs
+
+# Admin - Carts / Orders
+@api_router.get("/admin/carts")
+async def get_all_carts():
+    carts = await db.carts.find({}, {"_id": 0}).to_list(1000)
+    active_carts = [c for c in carts if len(c.get('items', [])) > 0]
+    return active_carts
+
+# Admin - Dashboard stats
+@api_router.get("/admin/stats")
+async def get_admin_stats():
+    products_count = await db.products.count_documents({})
+    events_count = await db.events.count_documents({})
+    testimonials_count = await db.testimonials.count_documents({})
+    newsletter_count = await db.newsletter.count_documents({})
+    carts = await db.carts.find({}, {"_id": 0}).to_list(1000)
+    active_carts = [c for c in carts if len(c.get('items', [])) > 0]
+    
+    total_revenue = 0
+    for cart in active_carts:
+        for item in cart.get('items', []):
+            total_revenue += item.get('price', 0) * item.get('quantity', 0)
+    
+    return {
+        "products": products_count,
+        "events": events_count,
+        "testimonials": testimonials_count,
+        "newsletter_subscribers": newsletter_count,
+        "active_carts": len(active_carts),
+        "potential_revenue": round(total_revenue, 2)
+    }
+
+
 # Include the router in the main app
 app.include_router(api_router)
 
